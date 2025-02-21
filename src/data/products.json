@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Escarabajo",
+    "description": "Escarabajo Egipcio",
+    "code": "ESCA",
+    "price": 100,
+    "status": true,
+    "quantity": 1000,
+    "category": "INSECTOS",
+    "thumbnails": [],
+    "id": 1
+  },
+  {
+    "title": "Iguana",
+    "description": "Iguana verde",
+    "code": "IGU",
+    "price": 200,
+    "status": true,
+    "quantity": 2000,
+    "category": "REPTILES",
+    "thumbnails": [],
+    "id": 2
+  },
+  {
+    "title": "Zapato",
+    "description": "Zapato Adidas Chulo",
+    "code": "ADI0025",
+    "price": 1254.23,
+    "status": true,
+    "stock": 1000,
+    "category": "ZAPATOS",
+    "thumbnails": [],
+    "id": 4
+  },
+  {
+    "title": "Chanclas",
+    "description": "Chancla sobrepreciada",
+    "code": "CHAN0023",
+    "price": 200,
+    "status": true,
+    "stock": 2000,
+    "quantity": "ZAPATOS",
+    "thumbnails": [],
+    "id": 5
+  },
+  {
+    "title": "Pulsera",
+    "description": "Pulsera metálica con el Padre Nuestro",
+    "code": "PULPN01",
+    "price": 80,
+    "status": true,
+    "quantity": 60,
+    "category": "ACCESORIOS",
+    "thumbnails": [],
+    "id": 6
+  },
+  {
+    "title": "La guerra y la paz",
+    "description": "Libro de puras falsedades",
+    "code": "LEV002",
+    "price": 10,
+    "status": true,
+    "quantity": 152,
+    "category": "LIBROS",
+    "thumbnails": [],
+    "id": 7
+  },
+  {
+    "title": "Calcetines",
+    "description": "Calcetines usados",
+    "code": "CAL009887",
+    "price": 45,
+    "status": true,
+    "quantity": 652,
+    "category": "ROPA INTERIOR",
+    "thumbnails": [],
+    "id": 8
+  },
+  {
+    "title": "pesticida",
+    "description": "pesticida al suicida",
+    "code": "pesti0984364",
+    "price": 200,
+    "status": true,
+    "quantity": 567,
+    "category": "elementos suicidas",
+    "thumbnails": [],
+    "id": 9
+  },
+  {
+    "title": "POPSTART",
+    "description": "Muñeco de peluche",
+    "code": "POP45667",
+    "price": 1234,
+    "status": true,
+    "stock": 5576,
+    "category": "Juguetes",
+    "thumbnails": [],
+    "id": 10
+  },
+  {
+    "id": 11,
+    "title": "AGREGADO DESDE POSTMAN",
+    "description": "100% Original actualizado",
+    "code": "actualizado 984674",
+    "price": 26,
+    "status": true,
+    "quantity": 600,
+    "category": "COSA",
+    "thumbnails": []
+  }
+]
