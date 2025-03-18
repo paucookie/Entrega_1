@@ -55,10 +55,10 @@ async addProductToCart(cartId, productId) {
     );
 
     if (productIndex !== -1) {
-      // si producto ya está en el carrito, aumenta la cantidad
+      // Para  aumentar la cantidad
     cart.products[productIndex].quantity += 1;
     } else {
-      // Agregar el producto al carrito
+      // Agregar producto 
     cart.products.push({ product: productId, quantity: 1 });
     }
 

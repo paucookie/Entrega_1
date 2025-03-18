@@ -3,20 +3,20 @@ const CartManager = require('../managers/CartManager');
 const router = express.Router();
 const cartManager = new CartManager();
 
-// POST: Crear un nuevo carrito
+//Crear nuevo 
 router.post('/', async (req, res) => {
     const newCart = await cartManager.createCart();
     res.status(201).json(newCart);
 });
 
-// GET: Obtener un carrito por ID
+// Carit por ID
 router.get('/:cid', async (req, res) => {
     const cart = await cartManager.getCartById(parseInt(req.params.cid));
     if (!cart) return res.status(404).json({ message: "Carrito no encontrado" });
     res.json(cart);
 });
 
-// POST: Agregar un producto a un carrito
+//Agregar un producto a un carrito
 router.post('/:cid/product/:pid', async (req, res) => {
     const cartId = parseInt(req.params.cid);
     const productId = parseInt(req.params.pid);

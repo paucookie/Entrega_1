@@ -1,11 +1,11 @@
-// Conectamos con el servidor de Socket.io
+// Conectamos con el servidor
 const socket = io();
 
-// Elementos del DOM
+// DOM
 const productForm = document.getElementById('productForm');
 const productList = document.getElementById('productList');
 
-// Función para renderizar la lista de productos
+// Renderizar la lista de productos
 function renderProducts(products) {
     productList.innerHTML = '';
     
@@ -29,7 +29,7 @@ function renderProducts(products) {
         productList.appendChild(productCard);
     });
     
-    // Agregar event listeners a los botones de eliminar
+    // eventListener para  botones de eliminar
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', function() {
             const productId = parseInt(this.getAttribute('data-id'));
@@ -43,7 +43,7 @@ socket.on('products', (products) => {
     renderProducts(products);
 });
 
-// Manejar el envío del formulario
+// envío del formulario
 productForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -58,7 +58,7 @@ productForm.addEventListener('submit', (e) => {
         thumbnails: []
     };
     
-    // Enviar el nuevo producto al servidor mediante websockets
+    // Enviar producto x websockets
     socket.emit('newProduct', newProduct);
     
     // Limpiar el formulario

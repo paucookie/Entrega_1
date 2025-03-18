@@ -3,26 +3,26 @@ const ProductManager = require('../managers/ProductManager');
 const router = express.Router();
 const productManager = new ProductManager();
 
-// GET todos
+//todos
 router.get('/', async (req, res) => {
     const products = await productManager.getProducts();
     res.json(products);
 });
 
-// GET por ID
+//Por id
 router.get('/:pid', async (req, res) => {
     const product = await productManager.getProductById(parseInt(req.params.pid));
     if (!product) return res.status(404).json({ message: "Producto no encontrado" });
     res.json(product);
 });
 
-// POS agregar
+//agregar
 router.post('/', async (req, res) => {
     const newProduct = await productManager.addProduct(req.body);
     res.status(201).json(newProduct);
 });
 
-// PUT actualizar
+//Actualizar
 router.put('/:pid', async (req, res) => {
     const updatedProduct = await productManager.updateProduct(parseInt(req.params.pid), req.body);
     if (!updatedProduct) return res.status(404).json({ message: "Producto no encontrado" });
