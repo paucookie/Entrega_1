@@ -7,11 +7,10 @@ const productRoutes = require('./routes/products.router.js');
 const cartRoutes = require('./routes/carts.router.js');
 const viewsRouter = require('./routes/views.router.js');
 const ProductManager = require('./managers/ProductManager');
-
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const productManager = new ProductManager();
+const productManager = new ProductManager();          
 
 //Handlebars
 app.engine('handlebars', handlebars.engine());

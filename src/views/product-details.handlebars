@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="product-details">
+    <h1>{{product.title}}</h1>
+    <p class="description">{{product.description}}</p>
+    <p class="price">${{product.price}}</p>
+    <p>Categoría: {{product.category}}</p>
+    <p>Stock: {{product.stock}}</p>
+    {{#if product.status}}
+    <p class="badge badge-success">Disponible</p>
+    {{else}}
+    <p class="badge badge-danger">No disponible</p>
+    {{/if}}
+    
+    <button id="addToCartBtn" class="btn btn-primary" data-product-id="{{product._id}}">Agregar al carrito</button>
+    <a href="/products" class="btn btn-secondary">Volver a productos</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('addToCartBtn').addEventListener('click', async function() {
+    const productId = this.dataset.productId;
+    try {
+      const cartId = localStorage.getItem('cartId') || 'default-cart-id';
+      const response = await fetch(`/api/carts/${cartId}/product/${productId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        alert('Producto agregado al carrito');
+      } else {
+        alert('Error al agregar producto');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al procesar la solicitud');
+    }
+  });
+</script>

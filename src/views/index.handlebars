@@ -1,0 +1,79 @@
+<div class="container">
+  <h1>Productos</h1>
+  
+  <div class="filters">
+    <form id="filterForm" method="GET">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" name="query" placeholder="Buscar productos..." value="{{query}}">
+        </div>
+        <div class="col">
+          <select class="form-control" name="sort">
+            <option value="">Sin ordenamiento</option>
+            <option value="asc" {{#if (eq sort "asc")}}selected{{/if}}>Precio: Menor a Mayor</option>
+            <option value="desc" {{#if (eq sort "desc")}}selected{{/if}}>Precio: Mayor a Menor</option>
+          </select>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div class="products-grid">
+    {{#each products}}
+    <div class="product-card">
+      <h3>{{this.title}}</h3>
+      <p>{{this.description}}</p>
+      <p class="price">${{this.price}}</p>
+      <p>Categoría: {{this.category}}</p>
+      
+      <div class="actions">
+        <a href="/products/{{this._id}}" class="btn btn-info">Ver detalles</a>
+        <button class="btn btn-success add-to-cart" data-product-id="{{this._id}}">Agregar al carrito</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  
+  <div class="pagination">
+    {{#if hasPrevPage}}
+    <a href="?page={{prevPage}}{{#if limit}}&limit={{limit}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}{{#if query}}&query={{query}}{{/if}}" class="btn btn-secondary">Anterior</a>
+    {{/if}}
+    
+    <span>Página {{page}} de {{totalPages}}</span>
+    
+    {{#if hasNextPage}}
+    <a href="?page={{nextPage}}{{#if limit}}&limit={{limit}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}{{#if query}}&query={{query}}{{/if}}" class="btn btn-secondary">Siguiente</a>
+    {{/if}}
+  </div>
+</div>
+
+<script>
+  // Script para agregar productos al carrito
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', async function() {
+      const productId = this.dataset.productId;
+      try {
+        //Ajustar la URL del carrito y el ID del carrito 
+        const cartId = localStorage.getItem('cartId') || 'default-cart-id';
+        const response = await fetch(`/api/carts/${cartId}/product/${productId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          alert('Producto agregado al carrito');
+        } else {
+          alert('Error al agregar producto');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al procesar la solicitud');
+      }
+    });
+  });
+</script>
